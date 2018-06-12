@@ -117,14 +117,18 @@ Please see the table below for the bot commands available at this time:
 | !check                                   | Start Hartbeat check that will run every 2 minutes.        |
 | !tipjar                                  | Displays my NIM Wallet address for kind donations <3       |
 ```
-`'account - Your service account email address from the Cloud Console.`
-`^JSON FilePath - Please ensure that the file path you put in the db matches exactly.`
-`*ProjectID - Copy it exactly as displayed on your Google Cloud Console.`
-`*ProjectAlias - An easy to remember name for your project, use _ or - but no spaces.`
+### Table Key Notes
+
+```
+'account - Your service account email address from the Cloud Console.
+^JSON FilePath - Please ensure that the file path you put in the db matches exactly.
+*ProjectID - Copy it exactly as displayed on your Google Cloud Console.
+*ProjectAlias - An easy to remember name for your project, use _ or - but no spaces.
+```
 
 Below is an example setup:
 
-![](https://imgur.com/KC7rxUC?raw=true)
+![Imgur Album Link](https://imgur.com/KC7rxUC?raw=true)
 
 ## The Grand Finale
 
