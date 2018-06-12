@@ -128,7 +128,7 @@ Please see the table below for the bot commands available at this time:
 
 Below is an example setup:
 
-![Imgur Album Link](https://imgur.com/KC7rxUC)
+![ExampleImage](https://i.imgur.com/KC7rxUC.png)
 
 ## The Grand Finale
 
