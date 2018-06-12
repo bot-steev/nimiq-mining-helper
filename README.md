@@ -3,7 +3,7 @@
 ## Requirements
 
 - [Python 3](https://www.python.org/download/releases/3.0/)
-- [discord.py](https://github.com/Rapptz/discord.py)
+- [Discord.py](https://github.com/Rapptz/discord.py)
 - [libCloud](https://libcloud.apache.org/)
 - [PyPi](https://pypi.org/)
 - [Discord Developer App][1]
@@ -28,9 +28,19 @@ whereis python3
 And verify that you have a path to `/usr/bin/python3` or `/usr/bin/python3.5`
 
 ### Step 5
-Next we install PyPi with:
+Next we install [PyPi](https://pypi.org/),
 ```
 sudo apt-get install python3-pip
+```
+
+Followed by the [Discord.py](https://github.com/Rapptz/discord.py) package:
+```
+pip3 install discord.py
+```
+
+And finally the [libCloud](https://libcloud.apache.org/) package:
+```
+pip3 install apache-libcloud
 ```
 
 ### Step 6
@@ -139,4 +149,18 @@ Now you can switch to your discord app and in your channel of choice start the h
 
 I think that just about covers it, but if you have any questions feel free to DM me on discord at `steev0#0420`.
  
+### P.S.
+
+In order for the bot to keep running when you close the SSH window follow below:
+
+Once the bot has been tested and working, cancel the process in your SSH session
+```
+ctrl+c
+```
+
+Then restart the bot using the following command:
+```
+nohup python3 nimiq_v01_BETA.py.py &
+```
+
 [1]: https://discordapp.com/developers/applications/me

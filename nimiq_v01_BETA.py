@@ -10,7 +10,6 @@ import datetime
 import os
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
-from google.cloud import monitoring_v3
 
 client = Bot(description="Nimiq Mining Helper",
              command_prefix="!", pm_help=False)
