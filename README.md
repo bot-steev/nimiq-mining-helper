@@ -135,6 +135,7 @@ Please see the table below for the bot commands available at this time:
 ### Table Key Notes
 
 ```
+N.B. - > Do not include the [] brackets !!!
 'account - Your service account email address from the Cloud Console.
 ^JSON FilePath - Please ensure that the file path you put in the db matches exactly.
 *ProjectID - Copy it exactly as displayed on your Google Cloud Console.
