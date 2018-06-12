@@ -111,7 +111,7 @@ async def delete_account(message):
     await client.wait_until_ready()
     message_content = (message.content).split(' ')
     account_name = (message_content[1])
-    c.execute('DELETE FROM service_account WHERE account_name=(?)',(account_name))
+    c.execute('DELETE FROM service_account WHERE account_name=(?)',(account_name,))
     conn.commit()
     await client.send_message(message.channel, 'Service Account deleted from Database ✅')
 
@@ -140,7 +140,7 @@ async def delete_project(message):
     await client.wait_until_ready()
     message_content = (message.content).split(' ')
     project_name = (message_content[1])
-    c.execute('DELETE FROM project_info WHERE project_name=(?)',(project_name))
+    c.execute('DELETE FROM project_info WHERE project_name=(?)',(project_name,))
     conn.commit()
     await client.send_message(message.channel, 'Project Info deleted from Database ✅')
 
