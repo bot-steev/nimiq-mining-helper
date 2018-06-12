@@ -156,7 +156,7 @@ I think that just about covers it, but if you have any questions feel free to DM
 
 Tips are appreciated :
 
-![NIM](https://i.imgur.com/Yxlm5Mr.png) `NIM: NQ49 HTNJ L51H SVQ5 6QCD 6LY1 1L8P XGEE LBCF`
+![NIM](https://i.imgur.com/W3ztF49.png) `NIM: NQ49 HTNJ L51H SVQ5 6QCD 6LY1 1L8P XGEE LBCF`
  
 ### P.S.
 
