@@ -4,8 +4,9 @@
 
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [Discord.py](https://github.com/Rapptz/discord.py)
-- [libCloud](https://libcloud.apache.org/)
 - [PyPi](https://pypi.org/)
+- [libCloud](https://libcloud.apache.org/)
+- [PyCrypto](https://pypi.org/project/pycrypto/)
 - [Discord Developer App][1]
 - [Owner of a server in the Discord Application](https://discordapp.com)
 - GCE Service Account as described in Telegram.
@@ -38,9 +39,14 @@ Followed by the [Discord.py](https://github.com/Rapptz/discord.py) package:
 pip3 install discord.py
 ```
 
-And finally the [libCloud](https://libcloud.apache.org/) package:
+Next the [libCloud](https://libcloud.apache.org/) package:
 ```
 pip3 install apache-libcloud
+```
+
+Finally we get the [PyCrypto](https://pypi.org/project/pycrypto/) package:
+```
+pip3 install pycrypto
 ```
 
 ### Step 6
@@ -125,7 +131,6 @@ Please see the table below for the bot commands available at this time:
 | !deleteproject [projectID*]              | Delete a Project from the project_info Table.              |
 | !cleardb                                 | Delete everything from both Tables.                        |
 | !check                                   | Start Hartbeat check that will run every 2 minutes.        |
-| !tipjar                                  | Displays my NIM Wallet address for kind donations <3       |
 ```
 ### Table Key Notes
 
@@ -148,6 +153,10 @@ Now you can switch to your discord app and in your channel of choice start the h
 ```
 
 I think that just about covers it, but if you have any questions feel free to DM me on discord at `steev0#0420`.
+
+Tips are appreciated :
+
+![Nimiq](https://i.imgur.com/uIdOEoT.png) _NIM_ : NQ49 HTNJ L51H SVQ5 6QCD 6LY1 1L8P XGEE LBCF
  
 ### P.S.
 
