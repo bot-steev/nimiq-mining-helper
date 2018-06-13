@@ -170,7 +170,7 @@ ctrl+c
 
 Then restart the bot using the following command:
 ```
-nohup python3 nimiq_v01_BETA.py.py &
+nohup python3 nimiq_v01_BETA.py &
 ```
 
 [1]: https://discordapp.com/developers/applications/me
