@@ -85,6 +85,20 @@ Create a new file called key.txt:
 touch key.txt
 ```
 
+Now in the top right corner of your SSH window click the cog icon and select `upload file`. Browse to where you saved the `primary_service_key.json` file as described in the telegram post and select it.
+
+Once the upload has completed, close the small window and execute the following, make sure you are still in the /src directory!
+```
+mv /home/user_name/primary_service_key.json .
+```
+
+Replace the user_name with your own.
+
+The path for your db entry will then look something like the following
+```
+/home/user_name/nimiq-mining-helper/src/primary_service_key.json
+```
+
 ### Step 12
 Follow the [Discord Developer App][1] link and create a new App called Niminq Mining Helper
 
