@@ -46,6 +46,9 @@ if not api_key:
 
 key_file.close()
 
+async def help(message):
+    await client.wait_until_ready()
+
 async def server_heartbeat(message):
     await client.wait_until_ready()
     
