@@ -54,8 +54,6 @@ async def server_heartbeat(message):
     
     while not client.is_closed:
         
-        await client.send_message(message.channel,'Starting Server Heartbeat Check ❤')
-        
         cntr2 = 0
 
         ComputeEngine = get_driver(Provider.GCE)
@@ -67,17 +65,17 @@ async def server_heartbeat(message):
         
         c.execute ('SELECT * FROM project_info')
         project_list = c.fetchall()
+        await client.send_message (message.channel, 'Now Checking Projects 🔍'+'\n'+project_list)
         for project in project_list:
             (project_name,project_alias) = project
             driver = ComputeEngine(account_name, file_path, project=project_name)
             node_list = driver.list_nodes()
-            await client.send_message (message.channel, 'Now Checking: ' + project_alias + '🔍')
             for node in node_list:
                 if node.state == 'stopped' or node.state == 'terminated':
-                    await client.send_message (message.channel, node.name + ' is dead 💀')
+                    await client.send_message (message.channel, project_alias + ' - ' + node.name + ' is dead 💀')
                     await client.send_message (message.channel, 'Firing start signal to: ' + node.name + '🚀')
                     start_node = driver.ex_start_node(node)
-                    asyncio.sleep(20)
+                    driver.wait_until_running(node.name, wait_period=3, timeout=20, ssh_interface='public_ips', force_ipv4=True)
                     if start_node == True:
                         await client.send_message (message.channel, node.name + ' started successfully ✅')
                         cntr2 += 1
