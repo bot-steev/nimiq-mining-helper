@@ -53,7 +53,7 @@ async def server_heartbeat(message):
     await client.wait_until_ready()
     
     while not client.is_closed:
-        
+
         cntr2 = 0
 
         ComputeEngine = get_driver(Provider.GCE)
@@ -65,7 +65,7 @@ async def server_heartbeat(message):
         
         c.execute ('SELECT * FROM project_info')
         project_list = c.fetchall()
-        await client.send_message (message.channel, 'Now Checking Projects 🔍'+'\n'+project_list)
+        await client.send_message (message.channel, 'Now Checking Projects 🔍')
         for project in project_list:
             (project_name,project_alias) = project
             driver = ComputeEngine(account_name, file_path, project=project_name)
