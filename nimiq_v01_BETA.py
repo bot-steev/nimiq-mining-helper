@@ -75,7 +75,7 @@ async def server_heartbeat(message):
                     await client.send_message (message.channel, project_alias + ' - ' + node.name + ' is dead 💀')
                     await client.send_message (message.channel, 'Firing start signal to: ' + node.name + '🚀')
                     start_node = driver.ex_start_node(node)
-                    driver.wait_until_running(node, wait_period=3, timeout=20, ssh_interface='public_ips', force_ipv4=True)
+                    driver.wait_until_running([node], wait_period=3, timeout=20, ssh_interface='public_ips', force_ipv4=True)
                     if start_node == True:
                         await client.send_message (message.channel, node.name + ' started successfully ✅')
                         cntr2 += 1
