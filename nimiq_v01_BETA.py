@@ -1,6 +1,7 @@
 import discord
 import discord.utils
 import asyncio
+import logging
 from discord.ext.commands import Bot
 from discord.ext import commands
 import platform
@@ -30,6 +31,12 @@ async def on_ready():
     print('You are running Nimiq-Mining-Helper[BETA]')
     print('Created by steev0#0420')
     return await client.change_presence(game=discord.Game(name='Stacking Bags 💰'))
+
+logger = logging.getLogger('discord')
+logger.setLevel(logging.DEBUG)
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+logger.addHandler(handler)
 
 sqlite_file = './src/miner_info_db.sqlite'
 conn = sqlite3.connect(sqlite_file)
