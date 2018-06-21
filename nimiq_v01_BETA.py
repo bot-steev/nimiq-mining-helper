@@ -61,9 +61,9 @@ async def server_heartbeat(message):
     
     await client.wait_until_ready()
     
-    ntime = time.strftime("%H:%M:%S", time.localtime())
-
     while not client.is_closed:
+
+        stime = time.strftime("%H:%M:%S", time.localtime())
 
         cntr2 = 0
 
@@ -75,26 +75,26 @@ async def server_heartbeat(message):
         
         c.execute ('SELECT * FROM project_info')
         project_list = c.fetchall()
-        
-        await client.send_message (message.channel, '------------------------------' + '\nNow Checking Projects 🔍 @ ' + str(ntime) + '\n------------------------------')
-        
+        report_format = '\nServer Heartbeat Initialised 💓 \nNow Checking Projects 🔍 @ ' + str(stime)
+
+        await client.send_message (message.channel, '```' + report_format + '\n```')
+
         for project in project_list:
             (project_name,project_alias) = project
             driver = ComputeEngine(account_name, file_path, project=project_name)
             node_list = driver.list_nodes()
             for node in node_list:
                 if node.state == 'stopped' or node.state == 'terminated':
-                    await client.send_message (message.channel, project_alias + ' - ' + node.name + ' is dead 💀' + '\n\nFiring start signal 🚀')
+                    await client.send_message (message.channel, '```'+project_alias + ' - ' + node.name + ' is dead 💀' + '\n\nFiring start signal 🚀'+'```')
                     start_node = driver.ex_start_node(node)
                     if start_node == True:
-                        await client.send_message (message.channel, node.name + ' started successfully ✅')
                         cntr2 += 1
                     else:
-                        await client.send_message (message.channel, 'Failed to start '+ node.name + '❌')
+                        await client.send_message (message.channel, '``` Failed to start '+ node.name + '❌```')
                 elif node.state == 'running':
                     cntr2 += 1
-                 
-        await client.send_message(message.channel, str(cntr2) + ' servers are running optimally  💰')   
+        etime = time.strftime("%H:%M:%S", time.localtime())            
+        await client.send_message(message.channel, '```\n🚂 '+ str(cntr2) + ' servers 🚂' + '\nServer Heartbeat Completed @ ' + str(etime) + ' ✅```')   
         await asyncio.sleep(120)
 
 async def account_info(message):
@@ -179,7 +179,6 @@ async def on_message(message):
     
     if message.content.startswith('!check'):
         client.loop.create_task(server_heartbeat(message))
-        await client.send_message(message.channel, 'Server Heartbeat Initialised')
 
     elif message.content.startswith('!accountinfo'):
         await account_info(message)
@@ -201,5 +200,5 @@ async def on_message(message):
 
     elif message.content.startswith('!cleardb'):
         await clear_database(message)
-        
+
 client.run(str(api_key))
