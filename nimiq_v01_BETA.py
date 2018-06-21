@@ -76,7 +76,7 @@ async def server_heartbeat(message):
         c.execute ('SELECT * FROM project_info')
         project_list = c.fetchall()
         
-        await client.send_message (message.channel, '---------------' + '\nNow Checking Projects 🔍 @ ' + str(ntime) + '\n---------------')
+        await client.send_message (message.channel, '------------------------------' + '\nNow Checking Projects 🔍 @ ' + str(ntime) + '\n------------------------------')
         
         for project in project_list:
             (project_name,project_alias) = project
