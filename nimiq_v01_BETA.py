@@ -8,6 +8,7 @@ import sys
 import sqlite3
 import datetime
 import os
+import time
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 
@@ -50,32 +51,34 @@ async def help(message):
     await client.wait_until_ready()
 
 async def server_heartbeat(message):
+    
     await client.wait_until_ready()
     
+    ntime = time.strftime("%H:%M:%S", time.localtime())
+
     while not client.is_closed:
 
         cntr2 = 0
 
         ComputeEngine = get_driver(Provider.GCE)
                 
-        c.execute ('SELECT * from service_account')
-        credentials_list = c.fetchall()
-        for credentials in credentials_list:
-            (account_name, file_path) = credentials
+        c.execute ('SELECT * FROM service_account LIMIT 1')
+        credentials_raw = c.fetchone()
+        (account_name, file_path) = credentials_raw
         
         c.execute ('SELECT * FROM project_info')
         project_list = c.fetchall()
-        await client.send_message (message.channel, 'Now Checking Projects 🔍')
+        
+        await client.send_message (message.channel, '---------------' + '\nNow Checking Projects 🔍 @ ' + str(ntime) + '\n---------------')
+        
         for project in project_list:
             (project_name,project_alias) = project
             driver = ComputeEngine(account_name, file_path, project=project_name)
             node_list = driver.list_nodes()
             for node in node_list:
                 if node.state == 'stopped' or node.state == 'terminated':
-                    await client.send_message (message.channel, project_alias + ' - ' + node.name + ' is dead 💀')
-                    await client.send_message (message.channel, 'Firing start signal to: ' + node.name + '🚀')
+                    await client.send_message (message.channel, project_alias + ' - ' + node.name + ' is dead 💀' + '\n\nFiring start signal 🚀')
                     start_node = driver.ex_start_node(node)
-                    driver.wait_until_running([node], wait_period=3, timeout=20, ssh_interface='public_ips', force_ipv4=True)
                     if start_node == True:
                         await client.send_message (message.channel, node.name + ' started successfully ✅')
                         cntr2 += 1
