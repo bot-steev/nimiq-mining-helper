@@ -118,7 +118,7 @@ Enter
 Now change back to the main directory and start up the bot:
 ```
 cd ..
-python3 nimiq_v01_BETA.py
+python3 nimiq_v02_BETA.py
 ```
 
 Should the bot start correctly, a block of text will appear in the terminal screen, of which a part will look like the following:
@@ -184,7 +184,7 @@ ctrl+c
 
 Then restart the bot using the following command:
 ```
-nohup python3 nimiq_v01_BETA.py &
+nohup python3 nimiq_v02_BETA.py &
 ```
 
 [1]: https://discordapp.com/developers/applications/me
